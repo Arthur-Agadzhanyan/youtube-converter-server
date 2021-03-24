@@ -1,49 +1,43 @@
-const app = require('express')()
-const cors = require('cors')
-const ytdl = require('ytdl-core')
-const ffmpeg = require('ffmpeg')
+import express from 'express'
+import cors from 'cors'
+import ytdl from 'ytdl-core'
+
+const app: express.Application = express()
 
 app.use(cors())
 
 app.get('/download', (req, res) => {
-    let url = req.query.url
-    // res.json({url})
+    let url: any = req.query.url
     res.header('Content-Disposition', 'attachment; filename="video.mp4"');
-
-    let infoFormats = ''
 
     async function download() {
         let info = await ytdl.getInfo(url);
-        infoFormats = info.formats.filter(video=>{
+        let audioAndVideoFormats = info.formats.filter(video=>{
             if(video.qualityLabel && video.audioBitrate){
                 return video
             }
         })
-        if(infoFormats){
+        if(audioAndVideoFormats){
             ytdl(url, {
-                quality: infoFormats[infoFormats.length - 1].itag,
-                filter: format => format.container === 'mp4',
-                format: 'mp4'
+                quality: audioAndVideoFormats[audioAndVideoFormats.length - 1].itag,
+                filter: format => format.container === 'mp4'
             }).pipe(res)
         }    
     }
-    fuck()  
+    download()  
 })
 
 app.get('/download-audio', (req, res) => {
-    let url = req.query.url
-    // res.json({url})
+    let url: any = req.query.url
     res.header('Content-Disposition', 'attachment; filename="audio.webm"');
 
     async function downloadAudio() {
         let info = await ytdl.getInfo(url);
         let audio = ytdl.filterFormats(info.formats, 'audioonly')[0]
         if(audio){
-            console.log(audio);
             ytdl(url, {
                 quality: audio.itag,
-                filter: format => format.container === 'webm',
-                format: 'webm'
+                filter: format => format.container === 'webm'
             }).pipe(res)
         }    
     }
@@ -51,8 +45,7 @@ app.get('/download-audio', (req, res) => {
 })
 
 app.get('/download-video', (req, res) => {
-    let url = req.query.url
-    // res.json({url})
+    let url: any = req.query.url
     res.header('Content-Disposition', 'attachment; filename="video.mp4"');
 
     async function downloadVideo() {
@@ -63,11 +56,9 @@ app.get('/download-video', (req, res) => {
             }
         })[0]
         if(video){
-            console.log(video);
             ytdl(url, {
                 quality: video.itag,
-                filter: format => format.container === 'mp4',
-                format: 'mp4'
+                filter: format => format.container === 'mp4'
             }).pipe(res)
         }    
     }

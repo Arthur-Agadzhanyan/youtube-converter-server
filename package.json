@@ -5,9 +5,9 @@
   "main": "server.js",
   "scripts": {
     "start": "node dist/server.js",
-    "dev":"nodemon src/server.ts",
-    "build":"tsc -p ."
-    },
+    "dev": "nodemon src/server.ts",
+    "build": "tsc -p ."
+  },
   "keywords": [],
   "author": "",
   "license": "ISC",

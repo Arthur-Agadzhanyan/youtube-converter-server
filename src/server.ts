@@ -6,6 +6,10 @@ const app: express.Application = express()
 
 app.use(cors())
 
+app.get('/',(req,res)=>{
+    res.json({message:'Page Not Found'})
+})
+
 app.get('/download', (req, res) => {
     let url: any = req.query.url
     res.header('Content-Disposition', 'attachment; filename="video.mp4"');

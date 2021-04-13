@@ -6,7 +6,7 @@
   "scripts": {
     "dev": "nodemon src/server.ts",
     "build": "npx tsc -p .",
-    "start": "concurrently \"npm run build \" \" node dist/server.js \""
+    "start": "npm run build && node dist/server.js"
   },
   "keywords": [],
   "author": "Arthur Agadzhanyan",

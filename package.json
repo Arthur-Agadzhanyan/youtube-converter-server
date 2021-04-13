@@ -5,7 +5,7 @@
   "main": "server.js",
   "scripts": {
     "dev": "nodemon src/server.ts",
-    "build": "tsc -p .",
+    "build": "npx tsc -p .",
     "start": "npm run build concurrently \" node dist/server.js \""
   },
   "keywords": [],

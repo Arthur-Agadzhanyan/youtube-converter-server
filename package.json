@@ -6,6 +6,8 @@
   "scripts": {
     "dev": "nodemon src/server.ts",
     "postinstall": "tsc", 
+    "watch-node": "nodemon dist/index.js",
+    "watch-ts": "tsc -w",
     "start": "node dist/server.js",
     "deploy":" git add . && git commit -m Heroku && git push heroku master " 
   },

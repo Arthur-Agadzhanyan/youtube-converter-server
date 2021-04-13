@@ -8,6 +8,9 @@
     "build": "tsc -p .",
     "start": "npm run build && node dist/server.js"
   },
+  "engines": {
+    "node": "14.4.0"
+  },
   "keywords": [],
   "author": "Arthur Agadzhanyan",
   "license": "ISC",

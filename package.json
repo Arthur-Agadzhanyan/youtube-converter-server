@@ -5,8 +5,8 @@
   "main": "server.js",
   "scripts": {
     "dev": "nodemon src/server.ts",
-    "build": "npx tsc -p .",
-    "start": "node dist/server.js"
+    "build": "tsc -p .",
+    "start": "node src/server.ts"
   },
   "keywords": [],
   "author": "Arthur Agadzhanyan",

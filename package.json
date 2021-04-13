@@ -6,7 +6,7 @@
   "scripts": {
     "dev": "nodemon src/server.ts",
     "build": "tsc -p .",
-    "start": "npm run build && node dist/server.js"
+    "start": "node src/server.ts"
   },
   "keywords": [],
   "author": "Arthur Agadzhanyan",

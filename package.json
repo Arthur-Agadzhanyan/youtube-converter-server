@@ -5,9 +5,12 @@
   "main": "server.js",
   "scripts": {
     "dev": "nodemon src/server.ts",
+    "postinstall": "tsc", 
     "build": "tsc -p .",
-    "start": "node dist/server.js"
+    "start": "node dist/server.js",
+    "deploy":" git add . && git commit -m Heroku && git push heroku master " 
   },
+  "engines": { "node": "14.16.1" },
   "keywords": [],
   "author": "Arthur Agadzhanyan",
   "license": "ISC",

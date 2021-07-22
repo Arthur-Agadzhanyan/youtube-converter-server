@@ -5,12 +5,14 @@
   "main": "server.js",
   "scripts": {
     "dev": "nodemon src/server.ts",
-    "postinstall": "tsc", 
+    "postinstall": "tsc",
     "build": "tsc -p .",
     "start": "node dist/server.js",
-    "deploy":" git add . && git commit -m Heroku && git push heroku master " 
+    "deploy": " git add . && git commit -m Heroku && git push heroku master "
   },
-  "engines": { "node": "14.16.1" },
+  "engines": {
+    "node": "14.16.1"
+  },
   "keywords": [],
   "author": "Arthur Agadzhanyan",
   "license": "ISC",
@@ -18,7 +20,7 @@
     "cors": "^2.8.5",
     "express": "^4.17.1",
     "ffmpeg": "0.0.4",
-    "ytdl-core": "^4.5.0"
+    "ytdl-core": "^4.9.0"
   },
   "devDependencies": {
     "@types/cors": "^2.8.10",

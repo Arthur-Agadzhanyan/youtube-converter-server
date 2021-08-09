@@ -40,7 +40,6 @@ app.get('/download-audio', (req, res) => {
         let info = await ytdl.getInfo(url);
         // console.log(info)
         let audio = ytdl.filterFormats(info.formats, 'audioonly')[0]
-        console.log(`Audio \n\n\n`,audio)
         if(audio){
             ytdl(url, {
                 quality: audio.itag,

@@ -22,6 +22,7 @@ app.get('/download', (req, res) => {
             }
         })
         if(audioAndVideoFormats){
+            console.log(audioAndVideoFormats)
             ytdl(url, {
                 quality: audioAndVideoFormats[audioAndVideoFormats.length - 1].itag,
                 filter: format => format.container === 'mp4'
@@ -33,15 +34,17 @@ app.get('/download', (req, res) => {
 
 app.get('/download-audio', (req, res) => {
     let url: any = req.query.url
-    res.header('Content-Disposition', 'attachment; filename="audio.webm"');
+    res.header('Content-Disposition', 'attachment; filename="audio.mp3"');
 
     async function downloadAudio() {
         let info = await ytdl.getInfo(url);
+        // console.log(info)
         let audio = ytdl.filterFormats(info.formats, 'audioonly')[0]
+        console.log(`Audio \n\n\n`,audio)
         if(audio){
             ytdl(url, {
                 quality: audio.itag,
-                filter: format => format.container === 'webm'
+                filter: format => format.container === 'webm' || format.container === 'mp4'
             }).pipe(res)
         }    
     }
